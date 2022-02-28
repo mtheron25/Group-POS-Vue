@@ -3,20 +3,13 @@
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue";
+import Navbar from "../src/components/Navbar.vue";
 export default {
   components: { Navbar },
 };
 </script>
 
 <style scoped>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
-}
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

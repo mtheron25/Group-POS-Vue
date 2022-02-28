@@ -4,10 +4,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <router-link class="nav-link" to="/">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/register">Register</router-link>
+            <router-link class="nav-link" to="/">Hello!</router-link>
           </li>
         </ul>
       </div>
@@ -30,6 +27,10 @@ export default {};
 nav {
   justify-content: center;
 }
+
+/* .nav-link {
+  color: white;
+} */
 
 .nav-item {
   font-weight: bolder;
