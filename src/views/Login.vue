@@ -1,96 +1,39 @@
 <template>
-  <div class="d-flex justify-content-center align-items-center mt-5">
-    <div class="card">
-      <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-        <li class="nav-item text-center">
-          <a
-            class="nav-link active btl"
-            id="pills-home-tab"
-            data-toggle="pill"
-            href="#pills-home"
-            role="tab"
-            aria-controls="pills-home"
-            aria-selected="true"
-            >Login</a
-          >
-        </li>
-        <li class="nav-item text-center">
-          <a
-            class="nav-link btr"
-            id="pills-profile-tab"
-            data-toggle="pill"
-            href="#pills-profile"
-            role="tab"
-            aria-controls="pills-profile"
-            aria-selected="false"
-            >Signup</a
-          >
-        </li>
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div
-          class="tab-pane fade show active"
-          id="pills-home"
-          role="tabpanel"
-          aria-labelledby="pills-home-tab"
-        >
-          <div class="form px-4 pt-5">
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Email or Phone"
-            />
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Password"
-            />
-            <button class="btn btn-dark btn-block">Login</button>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="pills-profile"
-          role="tabpanel"
-          aria-labelledby="pills-profile-tab"
-        >
-          <div class="form px-4">
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Name"
-            />
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Email"
-            />
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Phone"
-            />
-            <input
-              type="text"
-              name=""
-              class="form-control"
-              placeholder="Password"
-            />
-            <button class="btn btn-dark btn-block">Signup</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <form @submit.prevent="login" class="form neu-border">
+    <h2 class="form-heading">Login</h2>
+    <input
+      class="form-input neu-border-inset"
+      type="email"
+      v-model="email"
+      placeholder="Email"
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="password"
+      v-model="password"
+      placeholder="Password"
+    />
+    <button type="submit" class="form-btn neu-border">Sign in</button>
+    <!-- <div class="form-social-login">
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-google"></i>
+      </button>
+      <button class="form-btn neu-border form-social-btn">
+        <i class="fab fa-facebook-f"></i>
+      </button>
+    </div> -->
+
+    <p>
+      Not a member?
+      <router-link :to="{ name: 'Register' }">Create an account</router-link>
+    </p>
+  </form>
 </template>
 
 <script>
+import Navbar from "../components/Navbar.vue";
 export default {
+  components: { Navbar },
   data() {
     return {
       email: "",
@@ -125,64 +68,60 @@ export default {
 
 <style>
 body {
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("https://images.pexels.com/photos/5709615/pexels-photo-5709615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-color: #ffd3ba;
 }
-.card {
-  width: 400px;
-  border: none;
+.neu-border {
+  border-radius: 30px;
+  /* background: transparent !important; */
+  /* box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff; */
 }
-
-.btr {
-  border-top-right-radius: 5px !important;
-}
-
-.btl {
-  border-top-left-radius: 5px !important;
-}
-
-.btn-dark {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-.btn-dark:hover {
-  color: #fff;
-  background-color: #0d6efd;
-  border-color: #0d6efd;
-}
-
-.nav-pills {
-  display: table !important;
-  width: 100%;
-}
-
-.nav-pills .nav-link {
-  border-radius: 0px;
-  border-bottom: 1px solid #0d6efd40;
-}
-
-.nav-item {
-  display: table-cell;
-  background: #0d6efd2e;
+.neu-border-inset {
+  border-radius: 30px;
+  /* background: transparent !important; */
+  /* box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff; */
 }
 
 .form {
-  padding: 10px;
-  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  gap: 20px;
+  width: 100%;
+  margin-inline: auto;
+  max-width: 600px;
+  margin-top: 200px;
+  /* background: transparent !important; */
 }
 
-.form input {
-  margin-bottom: 12px;
-  border-radius: 3px;
+.form-heading {
+  text-align: center;
+  text-transform: uppercase;
 }
 
-.form input:focus {
-  box-shadow: none;
+.form-input,
+.form-btn {
+  border: none;
+  outline: none;
+  padding: 20px;
 }
 
-.form button {
-  margin-top: 20px;
+.form-btn {
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.form-btn:hover {
+  transform: scale(1.05);
+}
+
+.form-social-login {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-social-btn {
+  width: 45%;
+  color: #333;
 }
 </style>
